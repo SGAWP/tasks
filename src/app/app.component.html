@@ -1,0 +1,11 @@
+<mat-sidenav-container>
+	<mat-sidenav #sidenav>
+		<app-side-navbar (close)="closeSideNavbar()" />
+	</mat-sidenav>
+	<mat-sidenav-content fxLayout="column">
+		<app-top-navbar (open)="openSideNavbar()" />
+		<div class="page-content" fxFlex="1 1 auto">
+			<router-outlet />
+		</div>
+	</mat-sidenav-content>
+</mat-sidenav-container>

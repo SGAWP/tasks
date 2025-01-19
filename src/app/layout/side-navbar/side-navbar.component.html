@@ -1,0 +1,14 @@
+<mat-toolbar>
+  <span fxFlex>ЗАДАЧИ</span>
+  <button mat-icon-button (click)="onSideNavbarClose()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-nav-list fxLayout="column" fxLayoutGap=".5rem" [ngStyle]="{'padding': '.5rem'}">
+  <a mat-list-item routerLink="/logic-puzzles" routerLinkActive="active">
+    НА СООБРАЗИТЕЛЬНОСТЬ
+  </a>
+  <a mat-list-item routerLink="/programming-puzzles" routerLinkActive="active">
+    ПО ПРОГРАММИРОВАНИЮ
+  </a>
+</mat-nav-list>

@@ -1,0 +1,7 @@
+.mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input {
+  font-size: calc(5px + 1vw);
+}
+
+mat-form-field {
+  display: flex !important;
+}

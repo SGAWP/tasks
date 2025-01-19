@@ -1,0 +1,14 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="onSideNavbarOpen()" fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span fxFlex></span>
+  <div fxLayoutGap=".5rem">
+    <a mat-button routerLinkActive="active" routerLink="/logic-puzzles" fxHide.lt-md>
+      ЗАДАЧИ НА СООБРАЗИТЕЛЬНОСТЬ
+    </a>
+    <a mat-button routerLinkActive="active" routerLink="/programming-puzzles" fxHide.lt-md>
+      ЗАДАЧИ ПО ПРОГРАММИРОВАНИ
+    </a>
+  </div>
+</mat-toolbar>

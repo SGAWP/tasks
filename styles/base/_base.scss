@@ -1,0 +1,62 @@
+@use "../helpers/mixins" as mixin;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  cursor: default;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.page-content {
+  padding: 1rem;
+}
+
+.active {
+  background:
+    color-mix(in srgb, var(--mat-sys-primary) 10%, transparent) !important;
+}
+
+mat-sidenav {
+  width: 18rem !important;
+
+  @include mixin.respond(phone) {
+    width: 10rem !important;
+  }
+}
+
+mat-sidenav-container {
+  height: 100%;
+
+  @include mixin.respond(phone) {
+    overflow-x: auto !important;
+  }
+}
+
+.mdc-list-item__content {
+  text-align: center;
+}
+
+.mdc-button__label {
+  font-size: calc(5px + .8vw) !important;
+}
+
+.mdc-list-item__primary-text {
+  @include mixin.respond(phone) {
+    font-size: calc(5px + 1.1vw) !important;
+  }
+}
+
+.mat-drawer-content {
+  background-color: var(--mat-sys-surface-container);
+}

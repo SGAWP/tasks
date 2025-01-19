@@ -1,0 +1,73 @@
+<mat-card class="card" appearance="outlined">
+  <mat-card-header class="card__header">
+    <mat-card-title class="card__title">
+      Задача 2
+    </mat-card-title>
+    <mat-card-subtitle class="card__subtitle">
+      <p>
+        Написать функцию/метод, которая на вход получает массив
+        положительных целых чисел произвольной длины.
+        Например [42, 12, 18]. На выходе возвращает массив чисел, которые являются
+        общими делителями для всех указанных числе. В примере это будет [2, 3, 6].
+      </p>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="card__content">
+    <form [formGroup]="commonDivisorForm" [ngStyle]="{'margin-bottom': '1rem'}" fxLayout="row" fxLayout.lt-md="column"
+      autocomplete="off" (ngSubmit)="addNumber()">
+      <div fxFlex.lt-sm="100" fxFlex.gt-xs="100" fxFlex.gt-lg="50">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Введите число</mat-label>
+          <input matInput type="number" onlyNumbers formControlName="number" min="0">
+          <button mat-icon-button matSuffix type="button" (click)="clear()" matTooltip="Очистить">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div fxFlex.lt-sm="100" fxFlex.gt-xs="100" fxFlex.gt-lg="50" fxLayoutAlign="end">
+        <button mat-flat-button type="button" (click)="addNumber()" [disabled]="!commonDivisorForm.value.number">
+          Добавить в массив
+        </button>
+      </div>
+    </form>
+    <div fxLayout="column">
+      @if(result.length > 0) {
+      <div fxFlex="100">
+        <p>
+          <strong>Массив чисел:</strong> 
+          [
+            @for (number of result; track $index; let last = $last) {
+              {{ number }}
+              @if(!last) {
+                <span>, </span>
+              }
+            }
+          ]
+        </p>
+      </div>
+      <div fxFlex="100" [ngStyle]="{'margin-bottom': '1rem'}">
+        <button mat-flat-button type="button" (click)="findCommonDivisors()">
+          Найти общие делители
+        </button>
+      </div>
+      }
+      <div fxFlex="100">
+        @if(commonDivisors.length > 0) {
+        <p>
+          <strong>Общие делители:</strong>
+          [
+            @for (divisor of commonDivisors; track divisor; let last = $last) {
+              {{ divisor }}
+              @if(!last) {
+                <span>, </span>
+              }
+            }
+          ]
+        </p>
+        } @else {
+          <span>{{msg}}</span>
+        }
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

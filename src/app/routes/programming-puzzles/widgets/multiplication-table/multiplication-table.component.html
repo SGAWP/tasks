@@ -1,0 +1,62 @@
+<mat-card class="card" appearance="outlined">
+  <mat-card-header class="card__header">
+    <mat-card-title class="card__title">
+      Задача 4
+    </mat-card-title>
+    <mat-card-subtitle class="card__subtitle">
+      <p>
+        Написать метод, который в консоль выводит таблицу умножения. На
+        вход метод получает число, до которого выводит таблицу умножения. В консоли
+        должна появиться таблица. Например, если на вход пришло число 5, то
+        получим:
+      </p>
+      <div fxLayoutAlign="center center">
+        <img src="/multiplication-table.png" alt="Task 4">
+      </div>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="card__content">
+    <form [formGroup]="multiplicationForm" fxLayout="row" fxLayout.lt-md="column" autocomplete="off"
+      (ngSubmit)="generateTable()">
+      <div fxFlex.lt-sm="100" fxFlex.gt-xs="100" fxFlex.gt-lg="50">
+        <mat-form-field appearance="outline">
+          <mat-label>Введите число</mat-label>
+          <input matInput type="number" onlyNumbers formControlName="number" min="0">
+          <button mat-icon-button matSuffix type="button" (click)="clear()" matTooltip="Очистить">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div fxFlex.lt-sm="100" fxFlex.gt-xs="100" fxFlex.gt-lg="50" fxLayoutAlign="end">
+        <button mat-flat-button type="button" (click)="generateTable()" [disabled]="!multiplicationForm.value.number">
+          Сгенерировать таблицу
+        </button>
+      </div>
+    </form>
+    <div [ngStyle]="{'margin-top': '1rem'}">
+      <p><strong>Результат:</strong></p>
+      @if (multiplicationTable.length > 0 ) {
+      <div class="table-container">
+        <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="table-viewport">
+          <table class="table">
+            <tr class="table__row">
+              <th class="table__row-header"></th>
+              @for(number of multiplicationTable; track $index) {
+              <th class="table__row-header">
+                {{ number }}
+              </th>
+              }
+            </tr>
+            <tr *cdkVirtualFor="let row of multiplicationTable" class="table__row">
+              <th class="table__row-header">{{ row }}</th>
+              @for(col of multiplicationTable; track $index) {
+              <td class="table__cell">{{ row * col }}</td>
+              }
+            </tr>
+          </table>
+        </cdk-virtual-scroll-viewport>
+      </div>
+      }
+    </div>
+  </mat-card-content>
+</mat-card>

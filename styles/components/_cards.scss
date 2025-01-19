@@ -1,0 +1,53 @@
+@use "../helpers/mixins" as mixin;
+
+.card {
+  margin-bottom: 1rem;
+  padding: 2rem;
+
+  @include mixin.respond(phone) {
+    padding: 0;
+  }
+
+  &__header {
+    margin-bottom: 1rem;
+  }
+
+  &__title.mat-mdc-card-title {
+    font-size: calc(5px + 2vw);
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  &__subtitle.mat-mdc-card-subtitle {
+    font-size: calc(5px + 1.5vw);
+    line-height: 1.4;
+  }
+
+  &__content {
+    line-height: 1.4;
+    font-size: calc(5px + 1.4vw);
+  }
+
+  &__table {
+    display: grid;
+    justify-items: center;
+
+    td {
+      padding: .7rem;
+    }
+  }
+
+  p {
+    word-wrap: break-word;
+    text-align: justify;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+}
+
+.mat-mdc-card-outlined {
+  @include mixin.respond(phone) {
+    overflow-x: auto;
+    padding: 0;
+  }
+}
